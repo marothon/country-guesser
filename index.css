@@ -164,6 +164,14 @@ main {
         text-align: center;
         font-size: 1.5rem;
         margin-top: 20px;
+
+        &.correct{
+            color: green;
+        }
+
+        &.wrong{
+            color: red;
+        }
     }
 
     #remaining-attempts,

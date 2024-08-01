@@ -205,7 +205,7 @@ function countryClickListener(event) {
 		correctAnswers++;
 		event.target.classList.add("correct");
 		document.getElementById("game-status").innerHTML = "Right answer!";
-		document.getElementById("game-status").style.color = "green";
+		document.getElementById("game-status").classList.add('correct');
 
 		if (correctAnswers < maxCorrectAnswers) {
 			setTimeout(selectRandomCountry, 1000);
@@ -218,7 +218,7 @@ function countryClickListener(event) {
 		event.target.classList.add("wrong");
 		document.getElementById(currentCountry.cca2).classList.add("correct");
 		document.getElementById("game-status").innerHTML = "Wrong answer!";
-		document.getElementById("game-status").style.color = "red";
+		document.getElementById("game-status").classList.add('wrong');
 
 		if (wrongAnswers >= maxAttempts) {
 			document.getElementById("game-status").innerHTML = "You lost!";
