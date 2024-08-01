@@ -43,30 +43,28 @@ async function performSearch() {
 
 console.log("Hej JS-filen!");
 
-const urlAllCountries = "https://restcountries.com/v3.1/all";
+const urlAllCountries = "https://restcountries.com/v3.1/all?fields=name,cca2";
+
+//function to be used in Game Logic. What should it return?
+//Now results are stored in Local storage
+getListOfCountries_StoreOrderedAndRandomizedList(urlAllCountries);
 
 
-let countryList = getAllCountries(urlAllCountries);
-
-function toNunzia(){
-    getAllCountries(url);
-}
-
-async function getAllCountries(url) {
+async function getListOfCountries_StoreOrderedAndRandomizedList(url) {
   let countries = await fetchData(url);
   let countryList = [];
-  //console.log(countries);
   countries.forEach((country) => {
     let newCountry = { name: country.name.common, cca2: country.cca2 };
     countryList.push(newCountry);
   });
+
   localStorage.setItem("countryListOrdered", JSON.stringify(countryList));
+  
   let randomizedList = shuffleList(countryList);
   localStorage.setItem(
     "countryListRandomOrder",
     JSON.stringify(randomizedList)
   );
-  return countryList;
 }
 
 async function fetchData(url) {
@@ -75,7 +73,9 @@ async function fetchData(url) {
     let response = await fetch(url);
     let data = await response.json();
     return data;
-  } catch (error) {}
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 //Randomizes order of a list.
