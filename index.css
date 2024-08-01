@@ -50,3 +50,23 @@ main {
         }
     }
 }
+
+    #game-status {
+        text-align: center;
+        font-size: 1.5rem;
+        margin-top: 20px;
+    }
+
+    #remaining-attempts, #correct-answers {
+        text-align: center;
+        font-size: 1.2rem;
+        margin-top: 10px;
+    }
+
+    .correct {
+        fill: green !important;
+    }
+
+    .wrong {
+        fill: red !important;
+    }
