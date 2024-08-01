@@ -109,10 +109,11 @@ function displayErrorMessage(message) {
 	const countryList = document.getElementById("countryList");
 	countryList.innerHTML = ""; // Clear previous results
 
-	const errorMsg = document.createElement("p");
-	errorMsg.style.color = "red";
-	errorMsg.innerText = message;
-	countryList.appendChild(errorMsg);
+
+  const errorMsg = document.createElement('p');
+  errorMsg.classList = 'error-message'
+  errorMsg.innerText = message;
+  countryList.appendChild(errorMsg);
 
 	showModal();
 }

@@ -133,6 +133,9 @@ header {
 
         }
     }
+    .error-message {
+        color: red;
+    }
 
     section {
         h2 {
