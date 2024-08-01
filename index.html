@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Country Guesser</title>
     <link rel="stylesheet" href="index.css">
+    <script src="assets/svg-pan-zoom.min.js"></script>
 </head>
 <body>
     <header>
@@ -15,6 +16,13 @@
         <!-- section for guessing countries-->
         <section>
             <h2 id="current-country"></h2>
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <div id="countryList"></div>
+            </div>
+        </div>
+         <section>
             <h2 id="guessed-country"></h2>
         </section>
     </header>
