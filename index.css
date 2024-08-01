@@ -17,11 +17,17 @@ header {
 main {
     #world-map-container{
         width: 100%;
+        margin: auto;
         padding: 0 5rem;
         box-sizing: border-box;
         svg {
-            width: 100%;
-            margin-top: -2.5rem;
+            display: block;
+            margin: auto;
+            path{
+                fill: white;
+                stroke: black;
+                stroke-width: 0.5px;
+            }
         }
     }
 }
