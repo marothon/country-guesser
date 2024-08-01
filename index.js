@@ -25,7 +25,7 @@ document.getElementById('searchInput').addEventListener('keydown', function(even
 async function performSearch() {
     const searchText = document.getElementById('searchInput').value.toLowerCase();
     try {
-        const response = await fetch('https://restcountries.com/v3.1/all');
+        const response = await fetch('https://restcountries.com/v3.1/name/' + searchText);
         const data = await response.json();
         const filteredCountries = data.filter(country => country.name.common.toLowerCase().startsWith(searchText));
         if (filteredCountries.length > 0) {
