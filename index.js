@@ -92,7 +92,7 @@ function displayErrorMessage(message) {
     countryList.innerHTML = '';  // Clear previous results
 
     const errorMsg = document.createElement('p');
-    errorMsg.style.color = 'red';
+    errorMsg.classList = 'error-message'
     errorMsg.innerText = message;
     countryList.appendChild(errorMsg);
 
