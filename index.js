@@ -80,6 +80,11 @@ function displayCountries(countries) {
 		const showButton = document.createElement("button");
 		showButton.textContent = "Show on map";
 		showButton.classList = "showOnMapButton";
+		showButton.addEventListener('click', () => {
+			const modal = document.getElementById("modal");
+			modal.classList.toggle('hidden');
+			highlightCountry(country.cca2);
+		});
 
 		countryInfo.appendChild(countryName);
 		countryInfo.appendChild(countryCapital);
@@ -93,6 +98,11 @@ function displayCountries(countries) {
 	});
 
 	showModal();
+}
+
+function highlightCountry(isoCode2){
+	console.log(isoCode2);
+	document.querySelector(`path#${isoCode2}`).classList.add('highlight');
 }
 
 function displayErrorMessage(message) {
@@ -111,15 +121,15 @@ function showModal() {
 	const modal = document.getElementById("modal");
 	const closeButton = document.getElementsByClassName("close-button")[0];
 
-	modal.style.display = "block";
+	modal.classList.toggle('hidden');
 
 	closeButton.onclick = function () {
-		modal.style.display = "none";
+		modal.classList.toggle('hidden');
 	};
 
 	window.onclick = function (event) {
 		if (event.target == modal) {
-			modal.style.display = "none";
+			modal.classList.toggle('hidden');
 		}
 	};
 }

@@ -42,7 +42,7 @@ header {
     }
 
     .modal {
-        display: none;
+        display: block;
         position: fixed;
         z-index: 1;
         left: 0;
@@ -51,6 +51,10 @@ header {
         height: 100%;
         overflow: auto;
         background-color: rgba(0, 0, 0, 0.5);
+
+        &.hidden{
+            display: none;
+        }
 
         .modal-content {
             background-color: #fff;
@@ -155,6 +159,11 @@ main {
 
                 &:hover {
                     fill: rgb(238, 238, 238);
+                }
+
+                &.highlight{
+                    fill: #e0fc7b;
+                    stroke-width: 0.3px;
                 }
             }
         }
