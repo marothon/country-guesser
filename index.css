@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Actor&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap');
 
-:root{
+:root {
     font-family: "Actor", sans-serif;
     background-color: #8DB3EB;
     color: white;
@@ -8,18 +8,109 @@
 
 header {
     text-align: center;
-    h1{
+
+    h1 {
         font-weight: 300;
         font-size: 3rem;
         text-align: center;
     }
-    input{
+
+    input {
         text-align: start;
         padding: 0.8rem;
         width: 13rem;
         border: none;
         border: 1px solid #ddd;
         border-radius: 2rem;
+    }
+
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.5);
+
+        .modal-content {
+            background-color: #fff;
+            margin: 15% auto;
+            padding: 1.2rem;
+            border: 1px solid #888;
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .close-button {
+            color: #aaa;
+            float: right;
+            font-size: 1.7rem;
+            font-weight: bold;
+            align-self: flex-end;
+        }
+
+        .close-button:hover,
+        .close-button:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .country-row {
+            display: flex;
+            align-items: center;
+            margin: 0.5rem 0;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+
+            img {
+                width: 5rem;
+                height: auto;
+                margin-right: 1.25rem;
+            }
+
+            .country-info {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+
+                .country-name {
+                    color: black;
+                    font-size: 1.5rem;
+                    font-weight: bold;
+                    margin: 0.2rem;
+                }
+
+                .capital {
+                    color: #888;
+                    font-size: 0.8rem;
+                    margin: 0.2rem;
+                }
+
+                .population {
+                    color: #888;
+                    font-size: 0.8rem;
+                    margin: 0.2rem;
+                }
+            }
+
+            .showOnMapButton {
+                justify-self: flex-end;
+                background-color: black;
+                color: #fff;
+                cursor: pointer;
+                border-radius: 5px;
+                padding: 0.5rem 1rem;
+                margin-left: auto;
+            }
+
+        }
     }
 
     section {
@@ -30,20 +121,22 @@ header {
 }
 
 main {
-    #world-map-container{
+    #world-map-container {
         width: 100%;
         margin: auto;
         padding: 0 5rem;
         box-sizing: border-box;
+
         svg {
             display: block;
             margin: auto;
-            path{
+
+            path {
                 fill: white;
                 stroke: black;
                 stroke-width: 0.5px;
 
-                &:hover{
+                &:hover {
                     fill: rgb(238, 238, 238);
                 }
             }
