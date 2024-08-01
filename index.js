@@ -5,6 +5,8 @@ function setupWorldMap(){
     document.querySelectorAll("#world-map-container > svg > path").forEach(
         (countryPath) => countryPath.addEventListener('click', countryClickListener)
     );
+    const elem = document.querySelector('#world-map-container > svg');
+    svgPanZoom(elem);
 }
 
 function countryClickListener(event){
