@@ -41,7 +41,7 @@ main {
             path{
                 fill: white;
                 stroke: black;
-                stroke-width: 0.5px;
+                stroke-width: 0.2px;
 
                 &:hover{
                     fill: rgb(238, 238, 238);
