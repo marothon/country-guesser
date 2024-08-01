@@ -21,6 +21,16 @@ header {
         border: 1px solid #ddd;
         border-radius: 2rem;
     }
+    button {
+        text-align: center;
+        padding: 0.8rem;
+        width: 13rem;
+        border: none;
+        border: 1px solid #ddd;
+        border-radius: 2rem;
+        cursor: pointer;
+        margin-top: 1rem;
+    }
 
     section {
         h2 {
@@ -49,7 +59,6 @@ main {
             }
         }
     }
-}
 
     #game-status {
         text-align: center;
@@ -57,7 +66,8 @@ main {
         margin-top: 20px;
     }
 
-    #remaining-attempts, #correct-answers {
+    #remaining-attempts,
+    #correct-answers {
         text-align: center;
         font-size: 1.2rem;
         margin-top: 10px;
@@ -70,3 +80,4 @@ main {
     .wrong {
         fill: red !important;
     }
+}

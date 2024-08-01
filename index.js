@@ -17,8 +17,7 @@ function countryClickListener(event) {
 	).innerHTML = `You guessed ${countryName}`;
 }
 
-//Search countries
-
+// Search countries
 document
 	.getElementById("searchInput")
 	.addEventListener("keydown", function (event) {
@@ -45,17 +44,16 @@ async function performSearch() {
 	}
 }
 
-//array of countries -> local storage?
-//cca2, common, nativeName-array
+// array of countries -> local storage?
+// cca2, common, nativeName-array
 
-//function randomize array of countries
-
+// function randomize array of countries
 console.log("Hej JS-filen!");
 
 const urlAllCountries = "https://restcountries.com/v3.1/all?fields=name,cca2";
 
-//function to be used in Game Logic. What should it return?
-//Now results are stored in Local storage
+// function to be used in Game Logic. What should it return?
+// Now results are stored in Local storage
 getListOfCountries_StoreOrderedAndRandomizedList(urlAllCountries);
 
 async function getListOfCountries_StoreOrderedAndRandomizedList(url) {
@@ -86,12 +84,115 @@ async function fetchData(url) {
 	}
 }
 
-//Randomizes order of a list.
-//Fisher-Yates Sorting Algorithm (https://freecodecamp.org/news/how-to-shuffle-an-array-of-items-using-javascript-or-typescript/)
+// Randomizes order of a list.
+// Fisher-Yates Sorting Algorithm (https://freecodecamp.org/news/how-to-shuffle-an-array-of-items-using-javascript-or-typescript/)
 function shuffleList(array) {
 	for (let i = array.length - 1; i > 0; i--) {
 		const j = Math.floor(Math.random() * (i + 1));
 		[array[i], array[j]] = [array[j], array[i]];
 	}
 	return array;
+}
+
+// Game logic functions (with help of chat gpt)
+let currentCountry = null;
+let correctAnswers = 0;
+let wrongAnswers = 0;
+const maxAttempts = 3;
+const maxCorrectAnswers = 10;
+
+document.getElementById("start-game").addEventListener("click", startGame);
+
+async function startGame() {
+	resetGame();
+	await getListOfCountries_StoreOrderedAndRandomizedList(urlAllCountries);
+	selectRandomCountry();
+	updateGameStatus();
+}
+
+function countryClickListener(event) {
+	const isoCode2 = event.target.id.toUpperCase();
+	const countryName = event.target.getAttribute("title");
+	document.getElementById(
+		"guessed-country"
+	).innerHTML = `You guessed ${countryName}`;
+
+	if (!currentCountry) {
+		return;
+	}
+
+	if (isoCode2 === currentCountry.cca2) {
+		correctAnswers++;
+		event.target.classList.add("correct");
+		document.getElementById("game-status").innerHTML = "Right answer!";
+		document.getElementById("game-status").style.color = "green";
+
+		if (correctAnswers < maxCorrectAnswers) {
+			setTimeout(selectRandomCountry, 1000);
+		} else {
+			document.getElementById("game-status").innerHTML = "You have won!";
+			disableCountryClickListeners();
+		}
+	} else {
+		wrongAnswers++;
+		event.target.classList.add("wrong");
+		document.getElementById(currentCountry.cca2).classList.add("correct");
+		document.getElementById("game-status").innerHTML = "Wrong answer!";
+		document.getElementById("game-status").style.color = "red";
+
+		if (wrongAnswers >= maxAttempts) {
+			document.getElementById("game-status").innerHTML = "You lost!";
+			disableCountryClickListeners();
+		} else {
+			setTimeout(selectRandomCountry, 1000);
+		}
+	}
+	updateGameStatus();
+}
+
+function selectRandomCountry() {
+	const countryList = JSON.parse(
+		localStorage.getItem("countryListRandomOrder")
+	);
+	const randomIndex = Math.floor(Math.random() * countryList.length);
+	currentCountry = countryList[randomIndex];
+	document.getElementById(
+		"current-country"
+	).innerHTML = `Where is ${currentCountry.name}?`;
+	document.getElementById("guessed-country").innerHTML = "";
+}
+
+function updateGameStatus() {
+	document.getElementById(
+		"remaining-attempts"
+	).innerHTML = `Remaining attempts: ${maxAttempts - wrongAnswers}`;
+	document.getElementById(
+		"correct-answers"
+	).innerHTML = `Correct answers: ${correctAnswers}`;
+}
+
+function disableCountryClickListeners() {
+	document
+		.querySelectorAll("#world-map-container > svg > path")
+		.forEach((countryPath) =>
+			countryPath.removeEventListener("click", countryClickListener)
+		);
+}
+
+function resetGame() {
+	correctAnswers = 0;
+	wrongAnswers = 0;
+	currentCountry = null;
+	document.getElementById("game-status").innerHTML = "";
+	document.getElementById("current-country").innerHTML = "";
+	document.getElementById("guessed-country").innerHTML = "";
+	document.getElementById("remaining-attempts").innerHTML = "";
+	document.getElementById("correct-answers").innerHTML = "";
+	document
+		.querySelectorAll(".correct")
+		.forEach((element) => element.classList.remove("correct"));
+	document
+		.querySelectorAll(".wrong")
+		.forEach((element) => element.classList.remove("wrong"));
+	setupWorldMap();
 }
