@@ -7,10 +7,19 @@
 }
 
 header {
+    text-align: center;
     h1{
         font-weight: 300;
         font-size: 3rem;
         text-align: center;
+    }
+    input{
+        text-align: start;
+        padding: 0.8rem;
+        width: 13rem;
+        border: none;
+        border: 1px solid #ddd;
+        border-radius: 2rem;
     }
 
     section {
