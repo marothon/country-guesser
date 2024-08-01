@@ -10,8 +10,12 @@
 <body>
     <header>
         <h1>Country Guesser</h1>
-        <!-- TODO: Add search-bar and "Start game"-button -->
         <input type="text" id="searchInput" placeholder="Enter country name">
+        <!-- start guessing button-->
+        <button id="start-game">Start guessing</button>
+        <!-- section for guessing countries-->
+        <section>
+            <h2 id="current-country"></h2>
         <div id="modal" class="modal">
             <div class="modal-content">
                 <span class="close-button">&times;</span>
@@ -20,10 +24,14 @@
         </div>
          <section>
             <h2 id="guessed-country"></h2>
-         </section>
+        </section>
     </header>
     <main>
         <div id="world-map-container"></div>
+        <!-- div for status in game-->
+        <div id="game-status"></div>
+        <div id="remaining-attempts"></div>
+        <div id="correct-answers"></div>
     </main>
     <footer>
         <!-- TODO: Team Mabonusa Credits -->

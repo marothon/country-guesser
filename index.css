@@ -21,6 +21,16 @@ header {
         border: 1px solid #ddd;
         border-radius: 2rem;
     }
+    button {
+        text-align: center;
+        padding: 0.8rem;
+        width: 13rem;
+        border: none;
+        border: 1px solid #ddd;
+        border-radius: 2rem;
+        cursor: pointer;
+        margin-top: 1rem;
+    }
 
     input {
         text-align: start;
@@ -148,5 +158,34 @@ main {
                 }
             }
         }
+    }
+
+    #game-status {
+        text-align: center;
+        font-size: 1.5rem;
+        margin-top: 20px;
+
+        &.correct{
+            color: green;
+        }
+
+        &.wrong{
+            color: red;
+        }
+    }
+
+    #remaining-attempts,
+    #correct-answers {
+        text-align: center;
+        font-size: 1.2rem;
+        margin-top: 10px;
+    }
+
+    .correct {
+        fill: green !important;
+    }
+
+    .wrong {
+        fill: red !important;
     }
 }
