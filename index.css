@@ -12,4 +12,32 @@ header {
         font-size: 3rem;
         text-align: center;
     }
+
+    section {
+        h2 {
+            text-align: center;
+        }
+    }
+}
+
+main {
+    #world-map-container{
+        width: 100%;
+        margin: auto;
+        padding: 0 5rem;
+        box-sizing: border-box;
+        svg {
+            display: block;
+            margin: auto;
+            path{
+                fill: white;
+                stroke: black;
+                stroke-width: 0.5px;
+
+                &:hover{
+                    fill: rgb(238, 238, 238);
+                }
+            }
+        }
+    }
 }
